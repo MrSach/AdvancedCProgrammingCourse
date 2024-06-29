@@ -1,3 +1,5 @@
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -61,7 +63,7 @@ int main (int argc, char ** argv)
 	printftest = printme ("Testing again and again with %c and %s", 'e', "Strings AND chars");
 	printf ("\n");
 	
-	printftest = printme ("Hello %s, %s and %s, I got here just after %ld and arrived in ", 'e', "Strings AND chars");
+	printftest = printme ("This is a string, %s\nThis is also a string, %s\nThis is another string, %s\n%ld is a long decimal number, while %i is a signed 32 bit integer.\nThis should also output %5.5f correctly, along with %lf.\nThe long long integer can be demonstrated with %Ld.\n", "A", "BBB", "CCCCCCCCCCCC", 400009003, 438, 553284.0f, 356839.042071,  100000280000408254);
 	printf ("\n");
 
 	printf ("\n");
@@ -159,13 +161,15 @@ _Bool printme (char * str, ...)
 					c = * (str + i);
 					if (c == 'd' || c == 'i' || c == 'u')
 					{
-						arr [++j] = '\0';
+						arr [j++] = c;
+						arr [j++] = '\0';
 						fprintf (stdout, arr, va_arg (args, long int) );
 						break;
 					}
 					else if (c == 'f')
 					{
-						arr [++j] = '\0';
+						arr [j++] = c;
+						arr [j++] = '\0';
 						fprintf (stdout, arr, va_arg (args, double) );
 						break;
 					}
@@ -181,13 +185,15 @@ _Bool printme (char * str, ...)
 					c = * (str + i);
 					if (c == 'd' || c == 'i' || c == 'u')
 					{
-						arr [++j] = '\0';
+						arr [j++] = c;
+						arr [j++] = '\0';
 						fprintf (stdout, arr, va_arg (args, long long int) );
 						break;
 					}
 					else if (c == 'f')
 					{
-						arr [++j] = '\0';
+						arr [j++] = c;
+						arr [j++] = '\0';
 						fprintf (stdout, arr, va_arg (args, long double) );
 						break;
 					}
